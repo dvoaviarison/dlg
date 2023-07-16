@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 // bash ./gradlew clean build --warning-mode all -PDLG_KEY_ALIAS="eminor" -PDLG_KEY_PASSWORD="xxxxxx" -PDLG_STORE_PASSWORD="xxxxx"
-if (file('./secrets.gradlen').exists()) {
+if (file('./secrets.gradle').exists()) {
     apply from: './secrets.gradle'
 }
 else {
