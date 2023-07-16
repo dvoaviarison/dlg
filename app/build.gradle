@@ -7,6 +7,9 @@ if (file('./secrets.gradle').exists()) {
 }
 else {
     println "Using secrets provided as properties in CI build aka -P arguments"
+    println property('DLG_KEY_ALIAS')
+    println property('DLG_KEY_PASSWORD')
+    println property('DLG_STORE_PASSWORD')
     println property('DLG_KEY_PATH')
     project.ext.DLG_KEY_ALIAS = property('DLG_KEY_ALIAS')
     project.ext.DLG_KEY_PASSWORD = property('DLG_KEY_PASSWORD')
