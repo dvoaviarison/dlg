@@ -23,4 +23,14 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew clean build --warning-mode all -PDLG_KEY_ALIAS=$DLG_KEY_ALIAS -PDLG_KEY_PASSWORD=$DLG_KEY_PASSWORD -PDLG_STORE_PASSWORD=$DLG_STORE_PASSWORD -PDLG_KEY_PATH=$DLG_KEY_PATH
+      env:
+        DLG_KEY_ALIAS: ${{ secrets.DLG_KEY_ALIAS }}
+        PDLG_KEY_PASSWORD: ${{ secrets.PDLG_KEY_PASSWORD }}
+        DLG_STORE_PASSWORD: ${{ secrets.DLG_STORE_PASSWORD }}
+        DLG_KEY_PATH: ${{ secrets.DLG_KEY_ALIAS }}
+      run: |
+        ./gradlew clean build --warning-mode all 
+          -PDLG_KEY_ALIAS="$env.DLG_KEY_ALIAS"
+          -PDLG_KEY_PASSWORD="$env.DLG_KEY_PASSWORD"
+          -PDLG_STORE_PASSWORD="$env.DLG_STORE_PASSWORD"
+          -PDLG_KEY_PATH="$env.DLG_KEY_PATH"
