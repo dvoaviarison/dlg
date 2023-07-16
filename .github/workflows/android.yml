@@ -11,20 +11,20 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
     env:
         DLG_KEY_ALIAS: ${{ secrets.DLG_KEY_ALIAS }}
         PDLG_KEY_PASSWORD: ${{ secrets.DLG_KEY_PASSWORD }}
         DLG_STORE_PASSWORD: ${{ secrets.DLG_STORE_PASSWORD }}
         DLG_KEY_PATH: ${{ secrets.DLG_KEY_PATH }}
+
+    steps:
+    - uses: actions/checkout@v3
     - name: set up JDK 11
       uses: actions/setup-java@v3
       with:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
-
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
