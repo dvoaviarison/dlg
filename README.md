@@ -15,4 +15,4 @@ export JAVA_HOME=`/usr/libexec/java_home -v 11.X
 ```
 ./gradlew clean build
 ```
-
+- See `build.gradle` for how how the build is working and what type of artifact is generated
