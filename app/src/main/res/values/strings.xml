@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Donnez-Lui Gloire</string>
+    <string name="app_id">951551431602954</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_add_to_favorites">Ajouter aux favoris</string>
+    <string name="action_share">Partager…</string>
+    <string name="action_rate">Noter l\'application</string>
+    <string name="action_play">Jouer</string>
+    <string name="action_stop">Stopper</string>
+    <string name="title_activity_song_list_by_topic">SongListByTopicActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_songs_by_topic">Chants par themes</string>
+    <string name="action_remove_from_favorites">Enlever des favoris</string>
+    <string name="paypal">Faire un don</string>
+    <string name="mes_favoris">Mes favoris</string>
+    <string name="tous_les_chants">Tous les chants</string>
+    <string name="mode_nuit">Mode nuit</string>
+    <string name="mode_veill">Mode éveillé</string>
+    <string name="noter_l_application">Noter l\'application…</string>
+    <string name="animations">Animations</string>
+
+</resources>

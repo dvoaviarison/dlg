@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:gravity="right"
+    android:paddingLeft="26px"
+    android:paddingRight="15px"
+    android:paddingTop="15px"
+    android:paddingBottom="15px"
+    android:orientation="horizontal"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/item_selector"
+    android:layout_columnWeight="10"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/whole_thing"
+    >
+
+        <LinearLayout
+            android:layout_marginLeft="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:layout_gravity="center|left"
+            android:id="@+id/item_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="551 - A Toi la gloire au resucite a toi la victoire pour l'eternite"
+                android:id="@+id/song_title"
+                android:textSize="16dp"
+                android:textColor="@android:color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_weight="9"
+            android:id="@+id/menu_layout"
+            android:layout_gravity="bottom|right"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/set_favorite"
+                android:src="@drawable/ic_more_vert" />
+
+        </LinearLayout>
+
+
+</LinearLayout>

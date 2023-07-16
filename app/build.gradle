@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+// bash ./gradlew clean build --warning-mode all -PDLG_KEY_ALIAS="eminor" -PDLG_KEY_PASSWORD="xxxxxx" -PDLG_STORE_PASSWORD="xxxxx"
+
+android {
+    signingConfigs {
+        config {
+            keyAlias project.properties["DLG_KEY_ALIAS"]
+            keyPassword project.properties["DLG_KEY_PASSWORD"]
+            storeFile file(project.properties["DLG_KEY_PATH"])
+            storePassword project.properties["DLG_STORE_PASSWORD"]
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.eminor.donnez_luigloire"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionName '3.0.1'
+        signingConfig signingConfigs.config
+        versionCode 3010
+        archivesBaseName = "$applicationId-$versionName"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds true
+        abortOnError false
+    }
+    productFlavors {
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:23.0.1'
+    implementation 'com.android.support:cardview-v7:23.0.+'
+    implementation 'com.android.support:design:23.0.1'
+    implementation 'com.android.support:recyclerview-v7:23.0.+'
+    implementation 'com.facebook.android:facebook-android-sdk:4.6.0'
+}

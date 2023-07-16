@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_header_height"
+    android:background="@drawable/side_nav_bar"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="5dp"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:orientation="vertical"
+    android:gravity="top"
+    android:layout_weight="100">
+
+    <ImageView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_sda_book"
+        android:id="@+id/imageView"
+        android:layout_gravity="center|top"
+        android:layout_weight="73"/>
+
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:paddingTop="5dp"
+        android:text="Donnez-Lui Gloire"
+        android:textSize="14dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_weight="30"/>
+
+</LinearLayout>
+
