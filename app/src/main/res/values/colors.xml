@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#461B7E</color>
+    <color name="colorPrimaryComp">#CDA010</color>
+    <color name="colorPrimaryDark">#461B7E</color>
+    <color name="colorAccent">#7E587E</color>
+    <color name="colorListItem">#EDE9EE</color>
+    <color name="colorMenuItemLight">#4A4B52</color>
+    <color name="colorMenuItemNight">#E8E4EC</color>
+    <color name="colorNavMenuNight">#212022</color>
+    <color name="colorNavMenuLight">#EDEBEE</color>
+    <color name="colorLayoutNight">#0E0E0E</color>
+    <color name="colorLayoutLight">#F5F4F6</color>
+    <color name="colorTextNight">#E4E4E6</color>
+    <color name="colorTextLight">#333334</color>
+</resources>

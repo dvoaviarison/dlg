@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/grp1">
+
+        <item android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_favorite_border_black"
+            android:title="@string/mes_favoris" />
+
+        <item android:id="@+id/nav_all_songs"
+            android:icon="@drawable/ic_view_list_black"
+            android:title="@string/tous_les_chants" />
+
+        <item android:id="@+id/nav_night_mode"
+            android:icon="@drawable/ic_check_box_empty"
+            android:title="@string/mode_nuit" />
+
+        <item android:id="@+id/nav_keep_awake"
+            android:icon="@drawable/ic_toggle_off"
+            android:title="@string/mode_veill" />
+
+        <item android:id="@+id/nav_enable_Animation"
+            android:icon="@drawable/ic_toggle_off"
+            android:title="@string/animations" />
+
+    </group>
+
+    <group android:id="@+id/grp2">
+        <!--<item android:id="@+id/nav_donate"
+            android:icon="@drawable/ic_card_giftcard_black"
+            android:title="Faire un don"/>-->
+
+        <item android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_thumb_up_black"
+            android:title="@string/noter_l_application" />
+    </group>
+
+</menu>

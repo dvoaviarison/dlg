@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item android:id="@+id/action_add_to_favorites"
+        android:title="@string/action_add_to_favorites"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_remove_from_favorites"
+        android:title="@string/action_remove_from_favorites"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_share"
+        android:title="@string/action_share"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+
+    <item android:id="@+id/action_play"
+        android:title="@string/action_play"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_stop"
+        android:title="@string/action_stop"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+
+</menu>
