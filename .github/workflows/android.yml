@@ -11,12 +11,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    env:
-        DLG_KEY_ALIAS: ${{ secrets.DLG_KEY_ALIAS }}
-        PDLG_KEY_PASSWORD: ${{ secrets.DLG_KEY_PASSWORD }}
-        DLG_STORE_PASSWORD: ${{ secrets.DLG_STORE_PASSWORD }}
-        DLG_KEY_PATH: ${{ secrets.DLG_KEY_PATH }}
-
     steps:
     - uses: actions/checkout@v3
     - name: set up JDK 11
@@ -28,6 +22,11 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
+      env:
+          DLG_KEY_ALIAS: ${{ secrets.DLG_KEY_ALIAS }}
+          PDLG_KEY_PASSWORD: ${{ secrets.DLG_KEY_PASSWORD }}
+          DLG_STORE_PASSWORD: ${{ secrets.DLG_STORE_PASSWORD }}
+          DLG_KEY_PATH: ${{ secrets.DLG_KEY_PATH }}
       run: |
         ./gradlew clean build --warning-mode all 
           -PDLG_KEY_ALIAS="$DLG_KEY_ALIAS"
