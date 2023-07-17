@@ -1,3 +1,6 @@
+[![Android CI](https://github.com/dvoaviarison/dlg/actions/workflows/android.yml/badge.svg)](https://github.com/dvoaviarison/dlg/actions/workflows/android.yml)
+
+
 # Donnez-Lui Gloire
 An SDA app that I developed a while ago. 
 Bitbucket deleted the repo and all the related CI setup hence moving this to GitHub

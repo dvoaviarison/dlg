@@ -1,0 +1,17 @@
+Properties properties = new Properties()
+if (project.rootProject.file('local.properties').canRead()) {
+    println "Using local.proterties file to load secrets"
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+    project.ext.DLG_VERSION_NAME = properties.getProperty('DLG_VERSION_NAME')
+    project.ext.DLG_KEY_ALIAS = properties.getProperty('DLG_KEY_ALIAS')
+    project.ext.DLG_KEY_PASSWORD = properties.getProperty('DLG_KEY_PASSWORD')
+    project.ext.DLG_STORE_PASSWORD = properties.getProperty('DLG_STORE_PASSWORD')
+    project.ext.DLG_KEY_PATH = properties.getProperty('DLG_KEY_PATH')
+} else {
+    println "Using secrets provided as properties in CI build aka -P arguments"
+    project.ext.DLG_VERSION_NAME = property('DLG_VERSION_NAME')
+    project.ext.DLG_KEY_ALIAS = property('DLG_KEY_ALIAS')
+    project.ext.DLG_KEY_PASSWORD = property('DLG_KEY_PASSWORD')
+    project.ext.DLG_STORE_PASSWORD = property('DLG_STORE_PASSWORD')
+    project.ext.DLG_KEY_PATH = property('DLG_KEY_PATH')
+}
