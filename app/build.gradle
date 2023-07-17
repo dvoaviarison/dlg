@@ -16,9 +16,9 @@ android {
         applicationId "com.eminor.donnez_luigloire"
         minSdkVersion 16
         targetSdkVersion 28
-        versionName '3.0.1'
+        versionName project.ext.DLG_VERSION_NAME
         signingConfig signingConfigs.config
-        versionCode 3010
+        versionCode = "$versionName".replaceAll('.', '') + '0'
         archivesBaseName = "$applicationId-$versionName"
     }
     buildTypes {
