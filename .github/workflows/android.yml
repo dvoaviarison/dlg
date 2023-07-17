@@ -23,10 +23,10 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       env:
-          DLG_KEY_ALIAS: 'eminor'
-          PDLG_KEY_PASSWORD: ${{ secrets.DLG_KEY_PASSWORD }}
+          DLG_KEY_ALIAS: ${{ secrets.DLG_KEY_ALIAS }}
+          DLG_KEY_PASSWORD: ${{ secrets.DLG_KEY_PASSWORD }}
           DLG_STORE_PASSWORD: ${{ secrets.DLG_STORE_PASSWORD }}
-          DLG_KEY_PATH: './store.jks'
+          DLG_KEY_PATH: ${{ secrets.DLG_KEY_PATH }}
       run: |
         ./gradlew clean build --warning-mode all \
           -PDLG_KEY_ALIAS="$DLG_KEY_ALIAS" \
