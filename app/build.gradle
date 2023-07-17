@@ -11,10 +11,10 @@ else {
     println property('DLG_KEY_PASSWORD')
     println property('DLG_STORE_PASSWORD')
     println property('DLG_KEY_PATH')
-    project.ext.DLG_KEY_ALIAS = "eminor"
-    project.ext.DLG_KEY_PASSWORD = "Mamalijaas1"
-    project.ext.DLG_STORE_PASSWORD = "Mamalijaas1"
-    project.ext.DLG_KEY_PATH = "./store.jks"
+    project.ext.DLG_KEY_ALIAS = property('DLG_KEY_ALIAS')
+    project.ext.DLG_KEY_PASSWORD = property('DLG_KEY_PASSWORD')
+    project.ext.DLG_STORE_PASSWORD = property('DLG_STORE_PASSWORD')
+    project.ext.DLG_KEY_PATH = property('DLG_KEY_PATH')
 }
 
 android {
