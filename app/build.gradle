@@ -1,17 +1,5 @@
 apply plugin: 'com.android.application'
-
-// bash ./gradlew clean build --warning-mode all -PDLG_KEY_ALIAS="eminor" -PDLG_KEY_PASSWORD="xxxxxx" -PDLG_STORE_PASSWORD="xxxxx"
-if (file('./secrets.gradle').exists()) {
-    println "Using local secret file"
-    apply from: './secrets.gradle'
-}
-else {
-    println "Using secrets provided as properties in CI build aka -P arguments"
-    project.ext.DLG_KEY_ALIAS = property('DLG_KEY_ALIAS')
-    project.ext.DLG_KEY_PASSWORD = property('DLG_KEY_PASSWORD')
-    project.ext.DLG_STORE_PASSWORD = property('DLG_STORE_PASSWORD')
-    project.ext.DLG_KEY_PATH = property('DLG_KEY_PATH')
-}
+apply from: 'variables.gradle'
 
 android {
     signingConfigs {
