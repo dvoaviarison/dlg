@@ -44,3 +44,6 @@ jobs:
           -PDLG_KEY_PASSWORD="$DLG_KEY_PASSWORD" \
           -PDLG_STORE_PASSWORD="$DLG_STORE_PASSWORD" \
           -PDLG_KEY_PATH="$DLG_KEY_PATH"
+
+    - name: Tag and Release
+      run: git tag ${{ steps.version.outputs.version }}
