@@ -34,7 +34,8 @@ jobs:
           -PDLG_KEY_PATH="$DLG_KEY_PATH"
   release:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged
+    needs: build
+    
     steps:
       - name: Tag
         uses: K-Phoen/semver-release-action@master
