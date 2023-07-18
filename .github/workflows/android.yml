@@ -11,35 +11,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: set up JDK 11
+
+    - name: Use Git Version
+      id: version
+      uses: codacy/git-version@2.7.1
+
+    - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
     - name: Build with Gradle
       env:
           DLG_KEY_ALIAS: ${{ secrets.DLG_KEY_ALIAS }}
           DLG_KEY_PASSWORD: ${{ secrets.DLG_KEY_PASSWORD }}
           DLG_STORE_PASSWORD: ${{ secrets.DLG_STORE_PASSWORD }}
           DLG_KEY_PATH: ${{ secrets.DLG_KEY_PATH }}
+          DLG_VERSION_NAME: ${{ steps.version.outputs.version }}
       run: |
+        echo "The new version is $DLG_VERSION_NAME"
         ./gradlew clean build --warning-mode all \
-          -PDLG_VERSION_NAME="3.0.1" \
+          -PDLG_VERSION_NAME=$DLG_VERSION_NAME \
           -PDLG_KEY_ALIAS="$DLG_KEY_ALIAS" \
           -PDLG_KEY_PASSWORD="$DLG_KEY_PASSWORD" \
           -PDLG_STORE_PASSWORD="$DLG_STORE_PASSWORD" \
           -PDLG_KEY_PATH="$DLG_KEY_PATH"
-  release:
-    runs-on: ubuntu-latest
-    needs: build
-    
-    steps:
-      - name: Tag
-        uses: K-Phoen/semver-release-action@master
-        with:
-          release_branch: CISemver
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
