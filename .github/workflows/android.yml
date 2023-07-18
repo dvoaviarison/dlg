@@ -32,3 +32,13 @@ jobs:
           -PDLG_KEY_PASSWORD="$DLG_KEY_PASSWORD" \
           -PDLG_STORE_PASSWORD="$DLG_STORE_PASSWORD" \
           -PDLG_KEY_PATH="$DLG_KEY_PATH"
+  release:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
+    steps:
+      - name: Tag
+        uses: K-Phoen/semver-release-action@master
+        with:
+          release_branch: CISemver
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
