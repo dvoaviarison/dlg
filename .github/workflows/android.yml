@@ -51,7 +51,7 @@ jobs:
 
     - name: Save APK
       id: save_apk
-      run: 
+      run: |
         apk_file_path="${{ github.workspace }}/${{ steps.build.outputs.apk_file_name }}"
         cp "app/build/outputs/apk/release/${{ steps.build.outputs.apk_file_name }}" "$apk_file_path"
         echo "apk_file_path=$apk_file_path" >> $GITHUB_OUTPUT
