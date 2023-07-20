@@ -75,8 +75,12 @@ jobs:
         prerelease: false
 
     - name: Upload APK
-      uses: actions/upload-artifact@v2
+      if: success()
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: app-release
-        path: ${{ steps.save_apk.outputs.apk_file_path }}
-
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ steps.save_apk.outputs.apk_file_path }}
+        asset_name: ${{ steps.build.outputs.apk_file_name }}
+        asset_content_type: application/vnd.android.package-archive
