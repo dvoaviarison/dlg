@@ -43,13 +43,13 @@ jobs:
           -PDLG_KEY_PASSWORD=${{ secrets.DLG_KEY_PASSWORD }} \
           -PDLG_STORE_PASSWORD=${{ secrets.DLG_STORE_PASSWORD }} \
           -PDLG_KEY_PATH=${{ secrets.DLG_KEY_PATH }}
-        apk_file_name = "$NAMESPACE-$DLG_VERSION_NAME-release.apk"
+        apk_file_name="$NAMESPACE-$DLG_VERSION_NAME-release.apk"
         echo "apk_file_name=$apk_file_name" >> $GITHUB_OUTPUT
 
     - name: Save APK
       id: save_apk
       run: 
-        apk_file_path = "${{ github.workspace }}/${{ steps.build.outputs.apk_file_name }}"
+        apk_file_path="${{ github.workspace }}/${{ steps.build.outputs.apk_file_name }}"
         cp "app/build/outputs/apk/release/${{ steps.build.outputs.apk_file_name }}" "$apk_file_path"
         echo "apk_file_path=$apk_file_path" >> $GITHUB_OUTPUT
 
