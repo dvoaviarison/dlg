@@ -62,15 +62,15 @@ jobs:
       run: |
         git tag ${{ steps.version.outputs.version }}
         git push --tags
-
+    
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v1
+      uses: ncipollo/release-action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ steps.version.outputs.version }}
-        release_name: Release ${{ steps.version.outputs.version }}
+        tag: ${{ steps.version.outputs.version }}
+        name: Release ${{ steps.version.outputs.version }}
         draft: false
         prerelease: false
 
