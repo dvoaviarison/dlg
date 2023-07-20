@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  NAMESPACE: com.eminor.donnez_luigloire
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,24 +29,51 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-
     - name: Build with Gradle
+      id: build
       env:
-          DLG_KEY_ALIAS: ${{ secrets.DLG_KEY_ALIAS }}
-          DLG_KEY_PASSWORD: ${{ secrets.DLG_KEY_PASSWORD }}
-          DLG_STORE_PASSWORD: ${{ secrets.DLG_STORE_PASSWORD }}
-          DLG_KEY_PATH: ${{ secrets.DLG_KEY_PATH }}
           DLG_VERSION_NAME: ${{ steps.version.outputs.version }}
+
       run: |
+        chmod +x gradlew
         echo "The new version is $DLG_VERSION_NAME"
         ./gradlew clean build --warning-mode all \
           -PDLG_VERSION_NAME=$DLG_VERSION_NAME \
-          -PDLG_KEY_ALIAS="$DLG_KEY_ALIAS" \
-          -PDLG_KEY_PASSWORD="$DLG_KEY_PASSWORD" \
-          -PDLG_STORE_PASSWORD="$DLG_STORE_PASSWORD" \
-          -PDLG_KEY_PATH="$DLG_KEY_PATH"
+          -PDLG_KEY_ALIAS=${{ secrets.DLG_KEY_ALIAS }} \
+          -PDLG_KEY_PASSWORD=${{ secrets.DLG_KEY_PASSWORD }} \
+          -PDLG_STORE_PASSWORD=${{ secrets.DLG_STORE_PASSWORD }} \
+          -PDLG_KEY_PATH=${{ secrets.DLG_KEY_PATH }}
+        apk_file_name = "$NAMESPACE-$DLG_VERSION_NAME-release.apk"
+        echo "apk_file_name=$apk_file_name" >> $GITHUB_OUTPUT
 
-    - name: Tag and Release
-      run: git tag ${{ steps.version.outputs.version }}
+    - name: Save APK
+      id: save_apk
+      run: 
+        apk_file_path = "${{ github.workspace }}/${{ steps.build.outputs.apk_file_name }}"
+        cp "app/build/outputs/apk/release/${{ steps.build.outputs.apk_file_name }}" "$apk_file_path"
+        echo "apk_file_path=$apk_file_path" >> $GITHUB_OUTPUT
+
+    - name: Create Release Tag
+      id: create_release_tag
+      if: success()
+      run: |
+        git tag ${{ steps.version.outputs.version }}
+        git push --tags
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.create_release_tag.outputs.version }}
+        release_name: Release ${{ steps.create_release_tag.outputs.version }}
+        draft: false
+        prerelease: false
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: app-release
+        path: ${{ steps.save_apk.outputs.apk_file_path }}
+
