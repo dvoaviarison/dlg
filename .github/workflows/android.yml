@@ -8,6 +8,7 @@ on:
 
 env:
   NAMESPACE: "com.eminor.donnez_luigloire"
+  BRANCH_TO_RELEASE: 
 
 jobs:
   build:
@@ -60,13 +61,14 @@ jobs:
 
     - name: Create Release Tag
       id: create_release_tag
-      if: success()
+      if: ${{ github.ref == 'refs/heads/main' && success() }}
       run: |
         git tag ${{ steps.version.outputs.version }}
         git push --tags
     
     - name: Create Release
       id: create_release
+      if: ${{ github.ref == 'refs/heads/main' && success() }}
       uses: ncipollo/release-action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -77,7 +79,7 @@ jobs:
         prerelease: false
 
     - name: Upload APK
-      if: success()
+      if: ${{ github.ref == 'refs/heads/main' && success() }}
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
