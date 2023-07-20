@@ -11,6 +11,9 @@ env:
 
 jobs:
   build:
+    outputs:
+      apk_file_name: ${{steps.build.outputs.apk_file_name}}
+      apk_file_path: ${{steps.save_apk.outputs.apk_file_path}}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
