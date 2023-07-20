@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  NAMESPACE: com.eminor.donnez_luigloire
+  NAMESPACE: "com.eminor.donnez_luigloire"
 
 jobs:
   build:
@@ -69,8 +69,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ steps.create_release_tag.outputs.version }}
-        release_name: Release ${{ steps.create_release_tag.outputs.version }}
+        tag_name: ${{ steps.version.outputs.version }}
+        release_name: Release ${{ steps.version.outputs.version }}
         draft: false
         prerelease: false
 
