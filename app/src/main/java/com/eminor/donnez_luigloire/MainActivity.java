@@ -166,9 +166,6 @@ public class MainActivity extends AppCompatActivity
             FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
             fab.setImageResource(android.R.drawable.ic_media_play);
             this.musicMgr.StopMusic();
-
-            // Logs 'app deactivate' App Event.
-            FBEventMgr.deactivateApp(this);
         }
         catch (Exception e){
             // Absorb
@@ -178,9 +175,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-
-        // Logs 'install' and 'app activate' App Events.
-        FBEventMgr.activateApp(this);
     }
 
     private void doPrepareSearchView()
@@ -360,16 +354,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.action_add_to_favorites)
         {
-            FBEventMgr.logCustumEvent(this, "FAV_LYRICS");
-            FBEventMgr.logCustumEvent(this, "FAV_LYRICS" + this.currentLyricsNumber);
             this.addToFavorite(songTitle);
             return true;
         }
 
         if (id == R.id.action_remove_from_favorites)
         {
-            FBEventMgr.logCustumEvent(this, "REM_FAV_LYRICS");
-            FBEventMgr.logCustumEvent(this, "REM_FAV_LYRICS" + this.currentLyricsNumber);
             this.removeFromFavorite(songTitle);
             return true;
         }

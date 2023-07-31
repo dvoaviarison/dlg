@@ -196,9 +196,6 @@ public class LyricsMgr {
         try
         {
             context.startActivity(Intent.createChooser(intent, "Partager via"));
-
-            FBEventMgr.logCustumEvent(this.context, "SHARE_LYRICS");
-            FBEventMgr.logCustumEvent(this.context, "SHARE_LYRICS" + songNum);
         }
         catch (Exception e)
         {

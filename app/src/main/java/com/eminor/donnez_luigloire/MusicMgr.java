@@ -42,9 +42,6 @@ public class MusicMgr
             this.mediaPlayer.setLooping(true);
             this.mediaPlayer.start();
             this.currentMusic = musicFileName;
-
-            FBEventMgr.logCustumEvent(context, "PLAY_MIDI");
-            FBEventMgr.logCustumEvent(context, "PLAY_MIDI" + musicFileName);
         }
         catch (IOException e)
         {

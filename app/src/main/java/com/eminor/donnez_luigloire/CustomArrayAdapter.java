@@ -238,18 +238,12 @@ public class CustomArrayAdapter extends ArrayAdapter<String> {
                         //commits your edits
                         editor.commit();
 
-                        FBEventMgr.logCustumEvent(context, "FAV_LYRICS");
-                        FBEventMgr.logCustumEvent(context, "FAV_LYRICS" + songNum);
-
                         notifyDataSetChanged();
                         return true;
                     }
 
                     if (menuId == R.id.action_remove_from_favorites)
                     {
-                        FBEventMgr.logCustumEvent(context, "REM_FAV_LYRICS");
-                        FBEventMgr.logCustumEvent(context, "REM_FAV_LYRICS" + songNum);
-
                         favorites.remove(songTitleFull);
                         SharedPreferences.Editor editor = sharedPref.edit();
                         editor.putStringSet("favorites", new HashSet<String>(favorites));
